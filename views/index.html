@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    qwewqe
+</body>
+</html>
+<script>
+    
+    function getQuery(name){
+        let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+        let r =window.location.search.substr(1).match(reg)
+        if(r!=null) return unescape(r[2])
+        return null
+    }
+    if(!getQuery('code')){
+        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbbf869c63e49ff10&redirect_uri=${encodeURIComponent('https://tstunique.remymartin-china.com')}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`
+    }else{
+        window.location.href = `https://tstrm-crm.remycn.com/api/remy-crm/wechat//auth/redirects?code=${getQuery('code')}`
+    }
+   
+    
+</script>
